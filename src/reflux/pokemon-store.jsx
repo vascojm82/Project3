@@ -10,12 +10,6 @@ let PokemonStore = Reflux.createStore({
       A.sort(function(){return .5- Math.random()});
       return A;
     },
-    modalShown: function(){
-      this.modalOpen = 0;
-      this.modalOpen++;
-
-      this.fireUpdate(this.modalOpen);
-    },
     getPokemons: async function(mode, filter = null){
       let pokemonNumbers = null;
       this.pokemons = [];

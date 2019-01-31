@@ -6,7 +6,8 @@ let Actions = Reflux.createActions([
     'getPokemonDescription',
     'setPokemons',
     'searchPokemon',
-    'modalShown'
+    'modalShown',
+    'getModalShownCount'
 ]);
 
 module.exports= Actions;

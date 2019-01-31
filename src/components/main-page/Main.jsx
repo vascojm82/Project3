@@ -1,32 +1,34 @@
 let React = require("react");
 let ReactDOM = require('react-dom');
+let Reflux = require('reflux');
+let Actions = require('../../reflux/actions.jsx');
+let ModalStore = require('../../reflux/modal-store.jsx');
 let Modal = require('../Modal.jsx');
 let MusicPlayer = require('../../helpers/jukebox.js');
 let Header = require("./Header.jsx");
 let Search = require("./Search.jsx");
 let TileList = require("./TileList.jsx");
-let ModalContext = require('../contexts/modal-context');
 
 let Main = React.createClass({
+  //'SUBSCRIBER' in the OBSERVER DESIGN PATTERN, subscribe to change events in the store
+  mixins:[Reflux.listenTo(ModalStore, 'onChange')],   //Listen for changes in the store then call 'onChange' below
   getInitialState: function(){     //called only once when the component loads
-    return { tileList: '', modal:'', header: '', search: '', modalShown: 0 };
+    return { tileList: '', modal:'', header: '', search: '', modalShown: null };
   },
-  onModalOpen: function(count){
-    console.log("count :", count);
+  onChange: function(event, count){
     this.setState({
       modalShown: count
-    }, () => {
-      console.log("this.state.modalShown :", this.state.modalShown);
-
     });
   },
   toggleModal: function(){
     console.log("$('#openingModal'): ", $('#openingModal'));
+    console.log("this.refs.modal: ", this.refs.modal);
     console.log("$(ReactDOM.findDOMNode(this.refs.modal)): ", $(ReactDOM.findDOMNode(this.refs.modal)));
     $(ReactDOM.findDOMNode(this.refs.modal)).modal();
     $('#openingModal').modal('show');
   },
   componentDidMount: function(){
+    Actions.getModalShownCount();
     MusicPlayer.initializeJukebox()     //Promesified the 'MusicPlayer' (Jukebox) to force synchronicity.
       .then(function(jukebox){
         this.setState({
