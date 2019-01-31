@@ -42,7 +42,7 @@ let Main = React.createClass({
           <div className="row">
             <Description description={this.state.description} />
             <DetailsPanel characteristics={this.state.characteristics} />
-            <StatsChart />
+            <StatsChart height={this.state.height} weight={this.state.weight} age={this.state.age}/>
           </div>
         </div>
       </div>

@@ -69,6 +69,7 @@ let Search = React.createClass({
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-6">
+            
               <div style={trapezoidLeft}><h5 style={trapezoidH5Style}>&nbsp;</h5></div>
               <div style={advancedSearchLegendStyle}>
                 <h5 style={legendH5Style} className="text-center">Show Advanced Search &nbsp;<i onClick={this.onClick} className={this.state.chevron}></i></h5>

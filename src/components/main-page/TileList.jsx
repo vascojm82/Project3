@@ -64,7 +64,7 @@ let TileList = React.createClass({
 
     return(
       <div style={containerStyle} className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 tile-background">
           <div style={btnRowStyle} className="row">
             <RandomPokemonBtn />
             <PokeSort />

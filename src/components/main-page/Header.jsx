@@ -15,7 +15,8 @@ let Header = React.createClass({
       marginBottom: 10,
       border: "2px solid #616161",
       borderRadius: 4,
-      width: "80%"
+      width: "80%",
+      marginLeft: 13
     }
 
     let btnStyle={
@@ -29,14 +30,16 @@ let Header = React.createClass({
         <div className="col-md-12">
           <div className="row">
             <div className="col-md-4">
-              <div class="form-group">
-                <h4>Name or Number</h4>
+              <div className="form-group">
+                <h4 className="search-title" >Name or Number</h4>
                 <input style={inputStyle} type="text" class="form-control" id="pokemon" /><button type="button" style={btnStyle} className="btn btn-warning"><i className="fa fa-search"></i></button>
+              
               </div>
+              <div className="img-responsive"></div>
             </div>
           </div>
         </div>
-        <div className="col-md-12">
+        <div className="col-md-12 advance-search">
           <p>Use the Advanced Search to explore Pokemon by type, weakness, Ability, and more!</p>
         </div>
       </div>
